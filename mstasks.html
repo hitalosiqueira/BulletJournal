@@ -1,0 +1,251 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+    </head>
+    <body>
+
+  <script>
+  ID_FB = "";
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '650918505086018',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.8' // use graph api version 2.5
+  });
+
+  FB.Event.subscribe("auth.logout", function() {window.location = './index.html'});
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    FB.api('/me?fields=id,name,email,picture.type(normal)', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('name').innerHTML = response.name;     
+
+      ID_FB = response.id;
+
+
+
+      document.getElementById('email').innerHTML = response.email;
+
+      email = response.email ;
+
+      document.getElementById('photo').innerHTML = '<img src=\''+response.picture.data.url+'\' class=\'img-responsive\'>';
+
+
+      //document.getElementById('photo').innerHTML = <img src="perfil.jpg" class="img-responsive" alt="">;     
+      
+      var dataArray = {ID: response.id,
+  					   nome: response.name,
+  					   email: response.email,
+  					   photo_link: response.picture.data.url};
+      $.ajax({
+       type: "POST",
+       url: "php/InsertUser.php", //includes full webserver url
+       data: dataArray, 
+       cache: false,
+
+       success: function(msg){
+           console.log(msg);
+       }
+    });
+
+
+      $.ajax({
+       type: "POST",
+       url: "php/GetSharedBullets.php", //includes full webserver url
+       data: dataArray, 
+       cache: false,
+
+       success: function(msg){
+            document.getElementById('bullets').innerHTML = msg;
+           //console.log(msg);
+       }
+    });
+      /*$(document).on("click",'.bullet-title.toggle', function(event){
+        var el = $(this).parent().find('.expand-collapse .fa');
+        if ($(el).hasClass('fa-chevron-down')) {
+          $(el).removeClass('fa-chevron-down');
+          $(el).addClass('fa-chevron-up');
+        } else {
+          $(el).removeClass('fa-chevron-up');
+          $(el).addClass('fa-chevron-down');
+        }
+        $(this).parent().find('.toggle-container').toggle('fast');
+      });*/
+
+      $(document).on("touchstart",'.bullet-title.toggle', function(event){
+        var el = $(this).parent().find('.expand-collapse .fa');
+        if ($(el).hasClass('fa-chevron-down')) {
+          $(el).removeClass('fa-chevron-down');
+          $(el).addClass('fa-chevron-up');
+        } else {
+          $(el).removeClass('fa-chevron-up');
+          $(el).addClass('fa-chevron-down');
+        }
+        $(this).parent().find('.toggle-container').toggle('fast');
+      });
+
+
+
+  }),
+
+    
+
+    FB.api("/{user-id}/friends", function(response) {
+
+    });
+
+  }
+</script>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!--<div class="alert">Mockup made to be viewed on a 400 x 800 maximum resolution.</div>-->
+
+        <div class="header-container">
+            <div class="user-info">
+              <table>
+                <tbody>
+                  <td class="user-img" id = "photo">
+                  </td>
+                  <td class="user-data">
+                    <div class="data__username" id = "name">
+
+                    </div>
+                    <div class="data__email" id = "email">
+
+                    </div>
+                  </td>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="btn main" onclick="window.location = './help.html'">
+              Help
+            </div>
+            <div class="btn main" onclick="window.location = './index.html'">
+              <fb:login-button autologoutlink="true">Log Out</fb:login-button>
+            </div>
+        </div>
+
+        <div class="form-container">
+          <label for="bullet-name">Nome do Bullet:</label>
+          <input type="text" id="bullet-name">
+
+          <div class="task-btns">
+            <div class="btn main create">
+              Criar Bullet
+            </div>
+            <div class="btn main cancel">
+              Cancel
+            </div>
+          </div>
+        </div>
+
+        <div class="main-container">
+          <div class="tab-container">
+            <ul class="tab-ul">
+              <li><a href="./tasks.html">My Bullets</a></li>
+              <li class="active"><a href="./mstasks.html">My Shared Bullets</a></li>
+              <li><a href="./stasks.html">Shared with Me</a></li>
+            </ul>
+          </div>
+          <div class="tab-data">
+            <div class="bullet-container">
+
+              <div class="bullet" id="bullets">
+
+
+           </div>
+
+          </div>
+        </div>
+
+        <script src="https://use.fontawesome.com/c327be9a87.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

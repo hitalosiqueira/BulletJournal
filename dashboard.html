@@ -1,0 +1,215 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="alert">Mockup made to be viewed on a 400 x 800 maximum resolution.</div>
+
+        <div class="header-container">
+            <div class="user-info">
+              <table>
+                <tbody>
+                  <td class="user-img">
+                    <img src="img/avatar.jpg" alt="avatar" class="avatar">
+                  </td>
+                  <td class="user-data">
+                    <div class="data__username">norris42</div>
+                    <div class="data__email">carlosnorris@bol.com.br</div>
+                  </td>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="btn main" onclick="window.location = './help2.html'">
+              Help
+            </div>
+            <div class="btn main" onclick="window.location = './index.html'">
+              Sign Out
+            </div>
+        </div>
+
+        <div class="form-container">
+          <label for="bullet-name">Bullet Name:</label>
+          <input type="text" id="bullet-name">
+
+          <div class="new-task-form">
+            <div class="btn main"><i class="fa fa-plus"></i> New Task</div>
+          </div>
+
+          <div class="tasks-wrapper">
+            <div class="tasks-title">Task(s)</div>
+            <div class="task">
+              <input type="text" id="task1" value="Task 1">
+              <a href="#"><i class="fa fa-trash"></i></a>
+            </div>
+            <div class="task">
+              <input type="text" id="task2" value="Task 2">
+              <a href="#"><i class="fa fa-trash"></i></a>
+            </div>
+            <div class="task">
+              <input type="text" id="task3" value="Task 3">
+              <a href="#"><i class="fa fa-trash"></i></a>
+            </div>
+          </div>
+
+          <div class="task-btns">
+            <div class="btn main">
+              Create Bullet
+            </div>
+            <div class="btn main cancel">
+              Cancel
+            </div>
+          </div>
+        </div>
+
+        <div class="main-container">
+          <div class="tab-container">
+            <ul class="tab-ul">
+              <li class="active my-tasks-li"><a href="#">My tasks</a></li>
+              <li class="shared-with-me-li"><a href="#">Shared with me</a></li>
+            </ul>
+          </div>
+          <div class="tab-data">
+            <div class="bullet-container my-tasks">
+
+              <div class="bullet">
+                <span class="bullet-title toggle"><i class="fa fa-dot-circle-o"></i> Bullet 1</span>
+                <span class="expand-collapse"><i class="fa fa-chevron-down"></i></span>
+
+                <div class="toggle-container">
+                  <ul class="bullet-items">
+                    <li>Task 1 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                    <li>Task 2 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                  </ul>
+                  <span class="bullet-title secondary">Comments</span>
+                  <p class="comments-mock">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia nulla necessitatibus et!</p>
+                  <span class="bullet-title secondary">Task Owner</span>
+                  <p><i class="fa fa-user"></i> Owner's name</p>
+                </div>
+              </div>
+
+
+              <div class="bullet">
+                <span class="bullet-title toggle"><i class="fa fa-dot-circle-o"></i> Bullet 2</span>
+                <span class="expand-collapse"><i class="fa fa-chevron-down"></i></span>
+
+                <div class="toggle-container">
+                  <ul class="bullet-items">
+                    <li>Task 1 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                    <li>Task 2 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                  </ul>
+                  <span class="bullet-title secondary">Comments</span>
+                  <p class="comments-mock">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia nulla necessitatibus et!</p>
+                  <span class="bullet-title secondary">Task Owner</span>
+                  <p><i class="fa fa-user"></i> Owner's name</p>
+                </div>
+              </div>
+
+
+              <div class="bullet">
+                <span class="bullet-title toggle"><i class="fa fa-dot-circle-o"></i> Bullet 3</span>
+                <span class="expand-collapse"><i class="fa fa-chevron-down"></i></span>
+
+                <div class="toggle-container">
+                  <ul class="bullet-items">
+                    <li>Task 1 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                    <li>Task 2 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                  </ul>
+                  <span class="bullet-title secondary">Comments</span>
+                  <p class="comments-mock">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia nulla necessitatibus et!</p>
+                  <span class="bullet-title secondary">Task Owner</span>
+                  <p><i class="fa fa-user"></i> Owner's name</p>
+                </div>
+              </div>
+
+
+              <div class="bullet">
+                <span class="bullet-title toggle"><i class="fa fa-dot-circle-o"></i> Bullet 4</span>
+                <span class="expand-collapse"><i class="fa fa-chevron-down"></i></span>
+
+                <div class="toggle-container">
+                  <ul class="bullet-items">
+                    <li>Task 1 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                    <li>Task 2 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                  </ul>
+                  <span class="bullet-title secondary">Comments</span>
+                  <p class="comments-mock">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia nulla necessitatibus et!</p>
+                  <span class="bullet-title secondary">Task Owner</span>
+                  <p><i class="fa fa-user"></i> Owner's name</p>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="bullet-container shared-with-me">
+
+              <div class="bullet">
+                <span class="bullet-title toggle"><i class="fa fa-dot-circle-o"></i> Bullet 1</span>
+                <span class="expand-collapse"><i class="fa fa-chevron-down"></i></span>
+
+                <div class="toggle-container">
+                  <ul class="bullet-items">
+                    <li>Task 1 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                    <li>Task 2 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                  </ul>
+                  <span class="bullet-title secondary">Comments</span>
+                  <p class="comments-mock">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia nulla necessitatibus et!</p>
+                  <span class="bullet-title secondary">Task Owner</span>
+                  <p><i class="fa fa-user"></i> Owner's name</p>
+                </div>
+              </div>
+
+
+              <div class="bullet">
+                <span class="bullet-title toggle"><i class="fa fa-dot-circle-o"></i> Bullet 2</span>
+                <span class="expand-collapse"><i class="fa fa-chevron-down"></i></span>
+
+                <div class="toggle-container">
+                  <ul class="bullet-items">
+                    <li>Task 1 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                    <li>Task 2 <span class="inline-button"><i class="fa fa-times-circle"></i>&nbsp;<i class="fa fa-check-circle"></i></span></li>
+                  </ul>
+                  <span class="bullet-title secondary">Comments</span>
+                  <p class="comments-mock">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia nulla necessitatibus et!</p>
+                  <span class="bullet-title secondary">Task Owner</span>
+                  <p><i class="fa fa-user"></i> Owner's name</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="new-bullet-wrapper">
+          <div class="new-bullet-btn">
+            <a href="#">Add new bullet</a>
+          </div>
+        </div>
+
+        <script src="https://use.fontawesome.com/c327be9a87.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
